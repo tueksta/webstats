@@ -1,12 +1,12 @@
 class User
 
   def initialize (name:, sourceIDs:)
-  	@name=name
-  	@sourceIDs = sourceIDs
+    @name=name
+    @sourceIDs = sourceIDs
   end
 
   def listSources()
-  	@sourceIDs.keys
+    @sourceIDs.keys
   end
 
   def sourceToID(source:)
