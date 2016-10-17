@@ -4,7 +4,7 @@ require 'JSON'
 require './user'
 
 class ImportSource
-	def initialize(url, parameters = nil, pattern)
+	def initialize(url, parameters, pattern)
 		@url = url
 		@parameters = parameters
 		@pattern = pattern
