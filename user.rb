@@ -1,6 +1,6 @@
 class User
 
-  def initialize (name:, sourceIDs: nil)
+  def initialize (name:, sourceIDs:)
   	@name=name
   	@sourceIDs = sourceIDs
   end
