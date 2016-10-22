@@ -4,7 +4,7 @@ require 'parallel'
 #The User is the authority for all user specific profile IDs and listnames
 class User
 
-  def initialize (name:, source_ids: nil)
+  def initialize (name:, source_ids: {})
     @name = name
     @source_ids = source_ids
     @import = Importer.instance
@@ -16,7 +16,7 @@ class User
   end
 
   def get_all_stats ()
-    Parallel.each(all_sources) { |sourcename| get_one_stat(sourcename: sourcename) }
+    Parallel.each(all_sources) { |source| get_one_stat(sourcename: source) }
   end
 
 private  
