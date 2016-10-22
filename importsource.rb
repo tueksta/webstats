@@ -1,6 +1,7 @@
 require 'HTTParty'
 require 'Oga'
 
+#Each importer knows where to get the data for a certain service and delivers data that has been asked for
 class ImportSource
 
   def initialize (url, parameters, pattern)

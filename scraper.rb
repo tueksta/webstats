@@ -1,6 +1,6 @@
 require './user'
 
-#seed me as testuser
+#Seed me as testuser
 sourceIDs = {
               :goodreads   => '373582-andreas',
               :imdb        => 'ls007361121',

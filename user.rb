@@ -1,23 +1,14 @@
 require './importer'
 require 'parallel'
 
+#The User is the authority for all user specific profile IDs and listnames
 class User
 
   def initialize (name:, sourceIDs:)
     @name = name
     @sourceIDs = sourceIDs
-    @import = Importer.new
+    @import = Importer.instance
   end
-
-
-  def sourcespecificID (sourcename:)
-    @sourceIDs[sourcename]
-  end
-
-  def listSources ()
-    @sourceIDs.keys
-  end
-
 
   def getStat (sourcename:)
     count = @import.counterStat(importSource: sourcename, userID: sourcespecificID(sourcename: sourcename))
@@ -27,4 +18,14 @@ class User
   def getAllSourceStats ()
     Parallel.each(listSources) { |sourcename| getStat(sourcename: sourcename) }
   end
+
+private  
+  def sourcespecificID (sourcename:)
+    @sourceIDs[sourcename]
+  end
+
+  def listSources ()
+    @sourceIDs.keys
+  end
+
 end
