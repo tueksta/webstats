@@ -1,5 +1,5 @@
 require 'HTTParty'
-require 'Nokogiri'
+require 'Oga'
 require './user'
 
 class ImportSource
@@ -16,7 +16,7 @@ class ImportSource
 
   def countForUserID (userID:)
     sourcepage = HTTParty.get(urlBuilder(userID: userID))
-    parsedpage = Nokogiri::HTML(sourcepage)
+    parsedpage = Oga.parse_html(sourcepage)
     @pattern.call parsedpage
   end
 end

@@ -2,8 +2,7 @@ require './importsource'
 
 class Importer
 
-  def initialize ()
-		@sources = {
+		@@sources = {
 :goodreads   => ImportSource.new('https://www.goodreads.com/review/list/', '?shelf=read',                                        ->(arg) { arg.css('.h1Shelf span')[0].text.scan(/\d+/).first }),
 :imdb        => ImportSource.new('http://www.imdb.com/list/',              '?start=1&view=compact&sort=created:desc&defaults=1', ->(arg) { arg.css('#main .article .header .nav .desc')[0]['data-size'] }),
 :tvmaze      => ImportSource.new('http://www.tvmaze.com/users/',           '/stats',                                             ->(arg) { arg.css('section#activity ul li span')[0].text }),
@@ -14,9 +13,11 @@ class Importer
 :openflights => ImportSource.new('http://openflights.org/user/',           '',                                                   ->(arg) { arg.css('#stats')[0].text }),
 :flightdiary => ImportSource.new('http://flightdiary.net/',                '',                                                   ->(arg) { arg.css('ul#profile-main-data li.first h2')[0].text.scan(/\d+/).first }),
 		}
+
+  def initialize ()
   end
 
   def counterStat (userID:, importSource:)
-    @sources[importSource].countForUserID(userID: userID)
+    @@sources[importSource].countForUserID(userID: userID)
   end
 end
