@@ -10,13 +10,13 @@ class User
     @import = Importer.instance
   end
 
-  def get_one_stat (sourcename:)
-    count = @import.get_source_stat(import_source: sourcename, user_id: sourcespecific_id(sourcename: sourcename))
+  def one_stat (sourcename:)
+    count = @import.source_stat(import_source: sourcename, user_id: sourcespecific_id(sourcename: sourcename))
     puts "#{count} on service #{sourcename}"
   end
 
-  def get_all_stats ()
-    Parallel.each(all_sources) { |source| get_one_stat(sourcename: source) }
+  def all_stats ()
+    Parallel.each(all_sources) { |source| one_stat(sourcename: source) }
   end
 
 private  

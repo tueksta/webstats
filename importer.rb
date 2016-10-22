@@ -19,7 +19,7 @@ class Importer
 		}
   end
 
-  def get_source_stat (user_id:, import_source:)
+  def source_stat (user_id:, import_source:)
     @sources[import_source].get_stat(user_id: user_id)
   end
 end

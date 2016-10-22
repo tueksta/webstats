@@ -15,4 +15,4 @@ source_ids = {
 
 andreas = User.new(name: 'Andreas', source_ids: source_ids)
 
-andreas.get_all_stats()
+andreas.all_stats()
