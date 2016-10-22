@@ -1,6 +1,5 @@
 require 'HTTParty'
 require 'Oga'
-require './user'
 
 class ImportSource
 
