@@ -19,7 +19,7 @@ class Importer
 		}
   end
 
-  def counterStat (userID:, importSource:)
-    @sources[importSource].countForUserID(userID: userID)
+  def get_source_stat (user_id:, import_source:)
+    @sources[import_source].get_stat(user_id: user_id)
   end
 end

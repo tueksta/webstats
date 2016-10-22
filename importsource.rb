@@ -10,12 +10,12 @@ class ImportSource
     @pattern = pattern
   end
 
-  def urlBuilder (userID:)
-    @url + userID + @parameters
+  def url (user_id:)
+    @url + user_id + @parameters
   end
 
-  def countForUserID (userID:)
-    sourcepage = HTTParty.get(urlBuilder(userID: userID))
+  def get_stat (user_id:)
+    sourcepage = HTTParty.get(url(user_id: user_id))
     parsedpage = Oga.parse_html(sourcepage)
     @pattern.call parsedpage
   end

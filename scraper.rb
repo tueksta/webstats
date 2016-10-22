@@ -1,7 +1,7 @@
 require './user'
 
 #Seed me as testuser
-sourceIDs = {
+source_ids = {
               :goodreads   => '373582-andreas',
               :imdb        => 'ls007361121',
               :tvmaze      => '32308/tuexss',
@@ -13,6 +13,6 @@ sourceIDs = {
               :flightdiary => 'tuexss',
             }
 
-andreas = User.new(name: 'Andreas', sourceIDs: sourceIDs)
+andreas = User.new(name: 'Andreas', source_ids: source_ids)
 
-andreas.getAllSourceStats()
+andreas.get_all_stats()
