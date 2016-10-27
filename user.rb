@@ -11,7 +11,7 @@ class User
   end
 
   def one_stat (sourcename:)
-    count = @import.source_stat(import_source: sourcename, user_id: sourcespecific_id(sourcename: sourcename))
+    count = @import.source_stat(import_source: sourcename, user_url: source_url(sourcename: sourcename))
     puts "#{count} on service #{sourcename}"
   end
 
@@ -20,7 +20,7 @@ class User
   end
 
 private  
-  def sourcespecific_id (sourcename:)
+  def source_url (sourcename:)
     @source_ids[sourcename]
   end
 
