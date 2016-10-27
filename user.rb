@@ -4,9 +4,9 @@ require 'parallel'
 #The User is the authority for all user specific profile IDs and listnames
 class User
 
-  def initialize (name:, source_ids: {})
+  def initialize (name:, source_urls: {})
     @name = name
-    @source_ids = source_ids
+    @source_ids = source_urls
     @import = Importer.instance
   end
 
