@@ -3,7 +3,7 @@ require 'net/http'
 
 #Statprovider retrieves the stat from the statprovider parsed and formatted
 class Statprovider
-  @@valuepattern = /\d*,?\d+/
+  VALUEPATTERN = /\d*,?\d+/
   def initialize (name:, cssselector: '', cssposition: 0)
     @name = name
     @cssselector = cssselector
@@ -24,7 +24,7 @@ class Statprovider
   end
 
   def formattedstat (url)
-    domelement(url).text.scan(@@valuepattern).first
+    domelement(url).text.scan(VALUEPATTERN).first
   end
 
 end
