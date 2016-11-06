@@ -1,5 +1,5 @@
-require 'HTTParty'
 require 'Oga'
+require 'net/http'
 
 #Statprovider retrieves the stat from the statprovider and parses it
 class Statprovider
@@ -10,8 +10,8 @@ class Statprovider
   end
 
   def extractstat (url: '')
-    html = HTTParty.get(url)
+    html = Net::HTTP.get(url)
     dom  = Oga.parse_html(html)
-    dom.css(@cssselector)[@cssposition].text.scan(/\d+/).first
+    dom.css(@cssselector)[@cssposition].text.scan(/\d*,?\d+/).first
   end
 end

@@ -5,7 +5,7 @@ require 'singleton'
 class Statproviders
 	include Singleton
 
-  def initialize ()
+  def initialize
 		@statproviders = {
       :goodreads    => Statprovider.new(name: 'goodreads',   cssselector: '.h1Shelf span'),
       :imdb         => Statprovider.new(name: 'imdb',        cssselector: '.list-meta'),
@@ -20,9 +20,9 @@ class Statproviders
     @nullstatprovider = Statprovider.new(name: 'none')
   end
 
-  def userstat (statprovider: @nullstatprovider, statprovider_url: '')
+  def userstat (statprovider: @nullstatprovider, stat_url: '')
     provider = @statproviders[statprovider]
-    provider.extractstat(url: statprovider_url)
+    provider.extractstat(url: stat_url)
   end
 
 end

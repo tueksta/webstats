@@ -10,22 +10,20 @@ class User
     @import = Statproviders.instance
   end
 
-  def stat (statprovider:)
-    count = @import.userstat(statprovider: statprovider, statprovider_url: statprovider_url(statprovider: statprovider))
-    puts "#{count} on service #{statprovider}"
+  def stats (statprovider: statproviders)
+    Parallel.each(statprovider) {
+      |provider|
+      count = @import.userstat(statprovider: provider, stat_url: stat_url(statprovider: provider))
+      puts "#{count} on service #{provider}"
+    }
   end
 
-  def stats ()
-    Parallel.each(all_sources) { |provider| stat(statprovider: provider) }
-  end
-
-private  
-  def statprovider_url (statprovider:)
-    @statsources[statprovider]
-  end
-
-  def all_sources ()
+  def statproviders
     @statsources.keys
   end
 
+private  
+  def stat_url (statprovider:)
+    @statsources[statprovider]
+  end
 end
