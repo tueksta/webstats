@@ -14,4 +14,4 @@ statsources = {
               }
 
 andreas = User.new(name: 'Andreas', statsources: statsources)
-andreas.all_stats()
+andreas.stats()
