@@ -3,7 +3,7 @@ require './user'
 #Seed me as testuser
 statsources = {
                 :goodreads   => 'https://www.goodreads.com/review/list/373582-andreas?shelf=read',
-                :imdb        => 'http://www.imdb.com/list/ls007361121?start=1&view=compact&sort=created:desc&defaults=1',
+                :imdb        => 'http://www.imdb.com/user/ur5674832/',
                 :tvmaze      => 'http://www.tvmaze.com/users/32308/tuexss/stats',
                 :grouvee     => 'https://www.grouvee.com/user/tuexss/shelves/88870-played/',
                 :lastfm      => 'http://www.last.fm/user/Tueksta',
