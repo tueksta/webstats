@@ -1,5 +1,4 @@
 require './statproviders'
-require 'parallel'
 
 #The User is the authority for all user specific profile IDs and listnames
 class User
@@ -7,13 +6,14 @@ class User
   def initialize (name:, statsources: {})
     @name = name
     @statsources = statsources
-    @import = Statproviders.instance
+    @statproviders = Statproviders.instance
   end
 
   def stats (statprovider: statproviders)
+    require 'parallel'
     Parallel.each(statprovider) {
       |provider|
-      count = @import.userstat(statprovider: provider, stat_url: stat_url(statprovider: provider))
+      count = @statproviders.userstat(statprovider: provider, stat_url: stat_url(statprovider: provider))
       puts "#{count} on service #{provider}"
     }
   end

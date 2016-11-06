@@ -1,8 +1,8 @@
 require './statprovider'
-require 'singleton'
 
 #Statproviders retrieves the stat from the right statprovider
 class Statproviders
+  require 'singleton'
 	include Singleton
 
   def initialize
