@@ -27,9 +27,10 @@ class Statprovider
 
 end
 
+#NullStatprovider is null pattern for Statprovider
 class NullStatprovider < Statprovider
 
-  def extractstat (url: '')
+  def extractstat (*)
     'no stat found'
   end
 end
