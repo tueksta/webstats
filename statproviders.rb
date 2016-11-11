@@ -6,7 +6,7 @@ class Statproviders
 	include Singleton
 
   def initialize
-		@statproviders = {
+    @statproviders    =  {
       :goodreads    => Statprovider.new(name: 'goodreads',   cssselector: '.h1Shelf span'),
       :imdb         => Statprovider.new(name: 'imdb',        cssselector: '.list-meta'),
       :tvmaze       => Statprovider.new(name: 'tvmaze',      cssselector: 'section#activity ul li span'),
@@ -17,10 +17,10 @@ class Statproviders
       :openflights  => Statprovider.new(name: 'openflights', cssselector: '#stats'),
       :flightdiary  => Statprovider.new(name: 'flightdiary', cssselector: 'ul#profile-main-data li.first h2'),
 		}
-    @nullstatprovider = Statprovider.new(name: 'none')
+    @statproviders.default = NullStatprovider.new(name: 'none')
   end
 
-  def userstat (statprovider: @nullstatprovider, stat_url: '')
+  def userstat (statprovider: :none, stat_url: '')
     provider = @statproviders[statprovider]
     provider.extractstat(url: stat_url)
   end
